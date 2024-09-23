@@ -23,7 +23,7 @@ def summarize_csv(data_file):
 
     df = pd.read_csv(data_file, low_memory=False)
 
-    pandas_agent = create_pandas_dataframe_agent(selected_llm, df, verbose=True, agent_executor_kwargs= {"handle_parsing_errors":"True"})
+    pandas_agent = create_pandas_dataframe_agent(selected_llm, df, allow_dangerous_code=True, verbose=True, agent_executor_kwargs= {"handle_parsing_errors":"True"})
 
     data_summary = {}
 
@@ -52,7 +52,7 @@ def analyze_trend(data_file, variable_of_interest):
 
     df = pd.read_csv(data_file, low_memory=False)
 
-    pandas_agent = create_pandas_dataframe_agent(selected_llm, df, verbose=True, agent_executor_kwargs= {"handle_parsing_errors":"True"})
+    pandas_agent = create_pandas_dataframe_agent(selected_llm, df, allow_dangerous_code=True, verbose=True, agent_executor_kwargs= {"handle_parsing_errors":"True"})
 
     trend_response = pandas_agent.run(f"Veri kümesi içindeki şu değişkenin değişim trendini kısaca yorumla: {variable_of_interest} Yorumlamayı reddetme. Verideki satırlar geçmişten günümüze tarih bazlı olduğu için, verideki satırlara bakarak yorumda bulunabilirsin. Yanıtın Türkçe olarak ver.")
 
@@ -63,7 +63,7 @@ def ask_question(data_file, question):
 
     df = pd.read_csv(data_file, low_memory=False)
 
-    pandas_agent = create_pandas_dataframe_agent(selected_llm, df, verbose=True, agent_executor_kwargs= {"handle_parsing_errors":"True"})
+    pandas_agent = create_pandas_dataframe_agent(selected_llm, df, allow_dangerous_code=True, verbose=True, agent_executor_kwargs= {"handle_parsing_errors":"True"})
 
     AI_Response = pandas_agent.run(f"{question} Bu soruyu Türkçe yanıtla.")
 
