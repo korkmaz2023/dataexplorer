@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-my_key_openai = os.getenv("openai_apikey")
+my_key_openai = os.getenv("OPENAI_API_KEY")
 my_key_anthropic = os.getenv("anthropic_apikey")
 
 llm_gpt = ChatOpenAI(api_key=my_key_openai, model="gpt-4-turbo-preview",temperature = 0)
